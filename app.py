@@ -5,13 +5,15 @@ def check_fact(statement):
         "the sun is a star"
     ]
 
-    if statement.lower() in known_facts:
-        return "✅ This statement is known to be true."
-    else:
-        return "⚠️ This statement could not be verified."
+    statement_lower = statement.lower()
+    for fact in known_facts:
+        if fact in statement_lower:
+            return f"✅ This appears to be true: '{fact}'"
+
+    return "⚠️ This statement could not be verified."
 
 # Example usage:
-user_input = "The earth is round"
+user_input = "Did you know that the sun is a star?"
 print("User said:", user_input)
 result = check_fact(user_input)
 print("Fact-check result:", result)
